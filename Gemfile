@@ -79,5 +79,5 @@ gem 'rubocop', require: false
 gem 'rubocop-performance'
 gem 'rubocop-rails'
 gem 'rubocop-rspec'
-
+gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
 gem "tailwindcss-rails", "~> 2.0"
