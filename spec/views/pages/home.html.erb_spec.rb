@@ -2,8 +2,8 @@
 
 require 'spec_helper'
 
-describe 'pages/home.html.erb' do
-  it 'renders the home page' do
+describe 'pages/home' do
+  it 'renders the home pages' do
     render
 
     expect(rendered).to include('Promotions')
