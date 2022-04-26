@@ -1,0 +1,19 @@
+<div class="container px-6 py-3 mx-auto" >
+  <%= form_with model: @showroom, class: 'flex flex-col' do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+    <%= form.label :adress %>
+    <%= form.text_field :adress %>
+    <%= form.label :phone_01 %>
+    <%= form.text_field :phone_01 %>
+    <%= form.label :phone_02 %>
+    <%= form.text_field :phone_02 %>
+    <%= form.label :email %>
+    <%= form.email_field :email %>
+    <%= form.label :image_url %>
+    <%= form.text_field :image_url %>
+    <%= form.label :geolocation %>
+    <%= form.text_field :geolocation %>
+    <%= form.submit %>
+  <% end %>
+</div>

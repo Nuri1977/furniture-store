@@ -3,7 +3,7 @@
         <div class="flex flex-col md:flex-row md:justify-between md:items-center">
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
-                    <%= link_to 'Brand', "#", class: "text-2xl font-bold transition-colors duration-200 transform text-white lg:text-3xl hover:text-gray-300" %>
+                    <%= link_to 'Brand',  root_path, class: "text-2xl font-bold transition-colors duration-200 transform text-white lg:text-3xl hover:text-gray-300" %>
 
                     <!-- Search input on desktop screen -->
                     <div class="hidden mx-10 md:block">
@@ -32,10 +32,10 @@
             <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
             <div class="items-center md:flex">
                 <div class="flex flex-col mt-2 md:flex-row md:mt-0 md:mx-1">
-                    <%= link_to 'Home', "#", class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
+                    <%= link_to 'Home', root_path, class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
                     <%= link_to 'About', "#", class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
                     <%= link_to 'Catalogues', "#", class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
-                    <%= link_to 'Showrooms', "#", class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
+                    <%= link_to 'Showrooms', showrooms_path, class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
                 </div>
 
                 <div class="flex items-center py-2 -mx-1 md:mx-0">
