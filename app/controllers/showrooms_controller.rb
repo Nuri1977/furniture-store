@@ -23,6 +23,6 @@ class ShowroomsController < ApplicationController
   private
 
   def showroom_params
-    params.require(:showroom).permit(:name, :adress, :phone_01, :phone_02, :email, :image_url, :geolocation)
+    params.require(:showroom).permit(:name, :adress, :phone01, :phone02, :email, :image_url, :geolocation)
   end
 end
