@@ -2,12 +2,12 @@
 
 FactoryBot.define do
   factory :showroom do
-    name { 'MyString' }
-    adress { 'MyString' }
-    phone_01 { 'MyString' }
-    phone_02 { 'MyString' }
-    email { 'MyString' }
-    image_url { 'MyString' }
+    name { Faker::Name.name }
+    adress { Faker::Address.full_address }
+    phone { Faker::PhoneNumber.phone_number }
+    mobile { Faker::PhoneNumber.cell_phone }
+    email { Faker::Internet.email }
+    image_url { Faker::Avatar.image }
     geolocation { 'MyString' }
   end
 end
