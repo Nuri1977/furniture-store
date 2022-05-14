@@ -11,4 +11,8 @@ Rails.application.routes.draw do
   # post '/showrooms/create', to: 'showrooms#create'
   resources :showrooms, only: [:index, :new, :create]
   root to: 'pages#home'
+
+  namespace :dashboard do
+    root to: 'pages#home'
+  end
 end
