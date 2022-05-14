@@ -3,6 +3,10 @@
 require 'rails_helper'
 
 describe ShowroomsController, type: :controller do
+  let!(:user) { create :user }
+
+  before { sign_in user }
+
   my_params = {
     showroom: {
       name: 'Struga',
