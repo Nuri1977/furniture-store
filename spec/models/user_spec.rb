@@ -11,6 +11,5 @@ RSpec.describe User, type: :model do
     %i[email password].each do |field_name|
       it { expect(user).to validate_presence_of(field_name) }
     end
-
   end
 end
