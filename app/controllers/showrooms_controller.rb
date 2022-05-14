@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ShowroomsController < ApplicationController
+  before_action :authenticate_user!, only: %i[new create]
+
   def index
     @showrooms = Showroom.all
   end

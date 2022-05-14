@@ -47,8 +47,9 @@
                         <span class="absolute top-0 left-0 p-1 text-xs text-white bg-blue-500 rounded-full"></span>
                     <% end %>
                 </div>
-                <div>
+                <div class="md:flex">
                 <% if user_signed_in? %>
+                    <div class="my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" ><%= current_user.email %></div>
                     <%= link_to "Sign Out", destroy_user_session_path, data: {turbo_method: :delete}, class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
                 <% else %>
                     <%= link_to "Sign in", user_session_path, class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
