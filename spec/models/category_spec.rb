@@ -1,5 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject(:category) { create(:category) }
+
+  describe 'validations' do
+    it { expect(category).to be_valid }
+    it { expect(category).to validate_presence_of(:category_name) }
+  end
 end

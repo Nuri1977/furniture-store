@@ -8,6 +8,7 @@
         <% if action_name != "show" %>
           <%= link_to "Show this category", category, class: "rounded-lg py-3 px-5 bg-gray-100 block font-medium" %>
           <%= link_to 'Edit this category', edit_category_path(category), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 block font-medium" %>
+          <%= button_to "Destroy this category", category, data: { turbo_confirm: "Are you sure?" }, method: :delete, class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 block font-medium" %>
         <% end %>
       </td>
     </tr>
