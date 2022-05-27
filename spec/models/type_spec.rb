@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
-
 RSpec.describe Type, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject(:type) { create(:type) }
+
+  describe 'validations' do
+    it { expect(type).to be_valid }
+    it { expect(type).to validate_presence_of(:type_name) }
+  end
 end
