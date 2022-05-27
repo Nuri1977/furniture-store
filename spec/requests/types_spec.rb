@@ -17,17 +17,19 @@ require 'rails_helper'
 RSpec.describe '/types', type: :request do
   # Type. As you add validations to Type, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
-  end
+  subject(:type) { create(:type) }
+
+  let(:category) { create(:category) }
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    { category_id: '', type_name: '' }
+  end
+  let(:valid_attributes) do
+    { category_id: type.category_id, type_name: type.type_name }
   end
 
   describe 'GET /index' do
     it 'renders a successful response' do
-      Type.create! valid_attributes
       get types_url
       expect(response).to be_successful
     end
@@ -35,7 +37,6 @@ RSpec.describe '/types', type: :request do
 
   describe 'GET /show' do
     it 'renders a successful response' do
-      type = Type.create! valid_attributes
       get type_url(type)
       expect(response).to be_successful
     end
@@ -50,7 +51,6 @@ RSpec.describe '/types', type: :request do
 
   describe 'GET /edit' do
     it 'render a successful response' do
-      type = Type.create! valid_attributes
       get edit_type_url(type)
       expect(response).to be_successful
     end
@@ -61,7 +61,7 @@ RSpec.describe '/types', type: :request do
       it 'creates a new Type' do
         expect do
           post types_url, params: { type: valid_attributes }
-        end.to change(Type, :count).by(1)
+        end.to change(Type, :count).by(2)
       end
 
       it 'redirects to the created type' do
@@ -79,7 +79,7 @@ RSpec.describe '/types', type: :request do
 
       it "renders a successful response (i.e. to display the 'new' template)" do
         post types_url, params: { type: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to render_template('new')
       end
     end
   end
@@ -87,14 +87,14 @@ RSpec.describe '/types', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        { category_id: type.category_id, type_name: 'updated type' }
       end
 
       it 'updates the requested type' do
         type = Type.create! valid_attributes
         patch type_url(type), params: { type: new_attributes }
         type.reload
-        skip('Add assertions for updated state')
+        expect(response).to have_http_status(:found)
       end
 
       it 'redirects to the type' do
@@ -109,7 +109,7 @@ RSpec.describe '/types', type: :request do
       it "renders a successful response (i.e. to display the 'edit' template)" do
         type = Type.create! valid_attributes
         patch type_url(type), params: { type: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to render_template('edit')
       end
     end
   end
