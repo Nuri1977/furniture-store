@@ -14,10 +14,13 @@ class TypesController < ApplicationController
   # GET /types/new
   def new
     @type = Type.new
+    @categories = Category.all
   end
 
   # GET /types/1/edit
-  def edit; end
+  def edit
+    @categories = Category.all
+  end
 
   # POST /types
   def create

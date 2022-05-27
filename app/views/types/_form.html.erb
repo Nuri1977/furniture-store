@@ -13,7 +13,11 @@
 
   <div class="my-5">
     <%= form.label :category_id %>
-    <%= form.text_field :category_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.select :category_id,
+      @categories.map { |category| [category.category_name, category.id] },
+      {selected: "", disabled: "", prompt: 'Please select category'},
+      { class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"}
+    %>
   </div>
 
   <div class="my-5">
