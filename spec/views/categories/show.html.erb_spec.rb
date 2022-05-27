@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# Modify name
-
 require 'rails_helper'
 
 RSpec.describe 'categories/show', type: :view do
