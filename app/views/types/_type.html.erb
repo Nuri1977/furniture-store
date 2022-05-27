@@ -1,17 +1,20 @@
 <div id="<%= dom_id type %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Category:</strong>
-    <%= type.category_id %>
-  </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Type name:</strong>
-    <%= type.type_name %>
-  </p>
+  <tbody>
+    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+      <th scope="row" class="px-6 py-1 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+        <%= type.type_name %>
+      </th>
+      <th scope="row" class="px-6 py-1 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+        <%= type.category.category_name %>
+      </th>
+      <td class="px-6 py-2 text-right flex">
+        <% if action_name != "show" %>
+          <%= link_to "Show this type", type, class: "rounded-lg py-3 px-5 bg-gray-100 block font-medium" %>
+          <%= link_to 'Edit this type', edit_type_path(type), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 block font-medium" %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
 
-  <% if action_name != "show" %>
-    <%= link_to "Show this type", type, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this type', edit_type_path(type), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
 </div>
