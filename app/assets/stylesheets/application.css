@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+ .view-height {
+  min-height: 60vh;
+ }
