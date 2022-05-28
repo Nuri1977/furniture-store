@@ -18,10 +18,13 @@ RSpec.describe '/categories', type: :request do
   # Category. As you add validations to Category, be sure to
   # adjust the attributes here as well.
 
-  before do
-    user = User.create(email: 'text@example.com', password: '123456')
-    post user_session_path, params: { user: { email: user.email, password: user.password } }
-    get root_path
+  let(:category) { create(:category) }
+
+  let(:invalid_attributes) do
+    { category_name: '' }
+  end
+  let(:valid_attributes) do
+    { category_name: 'test category' }
   end
 
   describe 'GET /index' do
@@ -33,7 +36,6 @@ RSpec.describe '/categories', type: :request do
 
   describe 'GET /show' do
     it 'renders a successful response' do
-      category = Category.create(category_name: 'Test category')
       get category_url(category)
       expect(response).to be_successful
     end
@@ -48,7 +50,6 @@ RSpec.describe '/categories', type: :request do
 
   describe 'GET /edit' do
     it 'render a successful response' do
-      category = Category.create(category_name: 'Test category')
       get edit_category_url(category)
       expect(response).to be_successful
     end
@@ -58,12 +59,12 @@ RSpec.describe '/categories', type: :request do
     context 'with valid parameters' do
       it 'creates a new Category' do
         expect do
-          post categories_url, params: { category: { category_name: 'test category' } }
+          post categories_url, params: { category: valid_attributes }
         end.to change(Category, :count).by(1)
       end
 
       it 'redirects to the created category' do
-        post categories_url, params: { category: { category_name: 'test category' } }
+        post categories_url, params: { category: valid_attributes }
         expect(response).to redirect_to(category_url(Category.last))
       end
     end
@@ -71,12 +72,12 @@ RSpec.describe '/categories', type: :request do
     context 'with invalid parameters' do
       it 'does not create a new Category' do
         expect do
-          post categories_url, params: { category: { category_name: '' } }
+          post categories_url, params: { category: invalid_attributes }
         end.to change(Category, :count).by(0)
       end
 
       it "renders a successful response (i.e. to display the 'new' template)" do
-        post categories_url, params: { category: { category_name: '' } }
+        post categories_url, params: { category: invalid_attributes }
         expect(response).to render_template('new')
       end
     end
@@ -106,7 +107,7 @@ RSpec.describe '/categories', type: :request do
     context 'with invalid parameters' do
       it "renders a successful response (i.e. to display the 'edit' template)" do
         category = Category.create(category_name: 'Test category')
-        patch category_url(category), params: { category: { category_name: '' } }
+        patch category_url(category), params: { category: invalid_attributes }
         expect(response).to render_template('edit')
       end
     end
@@ -121,7 +122,6 @@ RSpec.describe '/categories', type: :request do
     end
 
     it 'redirects to the categories list' do
-      category = Category.create(category_name: 'Test category')
       delete category_url(category)
       expect(response).to redirect_to(categories_url)
     end
