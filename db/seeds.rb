@@ -1,3 +1,5 @@
+require 'faker'
+
 Showroom.create!(
   name: 'Struga',
   adress: 'Zufer Music',
@@ -29,3 +31,17 @@ Showroom.create!(
 )
 
 puts 'Showroom seed created successfully'
+
+5.times do
+  Category.create!(category_name: Faker::House.furniture)
+end
+
+5.times do
+  Type.create!(type_name: Faker::Commerce.brand, category_id: Category.first.id)
+  Type.create!(type_name: Faker::Commerce.brand, category_id: Category.second.id)
+  Type.create!(type_name: Faker::Commerce.brand, category_id: Category.last.id)
+end
+
+
+puts 'Seed data created successfully'
+
