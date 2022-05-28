@@ -1,3 +1,5 @@
+require 'faker'
+
 Showroom.create!(
   name: 'Struga',
   adress: 'Zufer Music',
@@ -27,5 +29,10 @@ Showroom.create!(
   image_url: 'http://www.mebel-lacka.com/img/gostivar.jpg',
   geolocation: 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2443.8373285498014!2d20.685132!3d41.178444!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1351579ae72358db%3A0x48381bde365dedb7!2sLACKA!5e1!3m2!1sen!2smk!4v1651302929145!5m2!1sen!2smk'
 )
+
+
+5.times do
+  Category.create!(category_name: Faker::House.furniture)
+end
 
 puts 'Showroom seed created successfully'
