@@ -49,6 +49,7 @@ jobs:
           PG_USER: postgres
         run: |
           bin/rails db:create db:schema:load
+          bundle exec rails db:test:prepare
           bundle exec rspec
   rubocop:
     runs-on: ubuntu-latest
