@@ -87,3 +87,5 @@ gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
 gem "tailwindcss-rails", "~> 2.0"
 gem 'erb-formatter'
 gem 'devise'
+gem 'activeadmin'
+gem 'sass-rails'

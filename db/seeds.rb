@@ -1,5 +1,7 @@
 require 'faker'
 
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
 Showroom.create!(
   name: 'Struga',
   adress: 'Zufer Music',
@@ -30,16 +32,12 @@ Showroom.create!(
   geolocation: 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2443.8373285498014!2d20.685132!3d41.178444!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1351579ae72358db%3A0x48381bde365dedb7!2sLACKA!5e1!3m2!1sen!2smk!4v1651302929145!5m2!1sen!2smk'
 )
 
-<<<<<<< HEAD
 puts 'Showroom seed created successfully'
-=======
->>>>>>> 259854c0f9f43a7e40ec19d8c4da302249339216
 
 5.times do
   Category.create!(category_name: Faker::House.furniture)
 end
 
-<<<<<<< HEAD
 5.times do
   Type.create!(type_name: Faker::Commerce.brand, category_id: Category.first.id)
   Type.create!(type_name: Faker::Commerce.brand, category_id: Category.second.id)
@@ -49,6 +47,4 @@ end
 
 puts 'Seed data created successfully'
 
-=======
 puts 'Showroom seed created successfully'
->>>>>>> 259854c0f9f43a7e40ec19d8c4da302249339216
