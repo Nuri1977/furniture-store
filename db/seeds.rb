@@ -33,13 +33,11 @@ Showroom.create!(
 )
 
 5.times do
-  Category.create!(category_name: Faker::House.furniture)
+  Category.create!(category_name: Faker::House.unique.furniture)
 end
 
 5.times do
-  Type.create!(type_name: Faker::Commerce.brand, category_id: Category.first.id)
-  Type.create!(type_name: Faker::Commerce.brand, category_id: Category.second.id)
-  Type.create!(type_name: Faker::Commerce.brand, category_id: Category.last.id)
+  Type.create!(type_name: Faker::Commerce.unique.brand, category_id: Category.first.id)
 end
 
 

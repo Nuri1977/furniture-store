@@ -15,4 +15,11 @@ ActiveAdmin.register Type do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+  form do |f|
+    f.inputs do
+      f.input :category_id, as: :select, collection: Category.all.map {|u| [u.category_name.to_s, u.id]}
+      f.input :type_name
+    end
+    f.actions
+  end
 end
