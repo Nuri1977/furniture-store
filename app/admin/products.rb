@@ -1,5 +1,6 @@
-ActiveAdmin.register Product do
+# frozen_string_literal: true
 
+ActiveAdmin.register Product do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -17,7 +18,7 @@ ActiveAdmin.register Product do
 
   form do |f|
     f.inputs do
-      f.input :type_id, as: :select, collection: Type.all.map {|u| [u.type_name.to_s, u.id]}
+      f.input :type_id, as: :select, collection: Type.all.map { |u| [u.type_name.to_s, u.id] }
       f.input :product_name
       f.input :price
       f.input :show_price
@@ -28,5 +29,4 @@ ActiveAdmin.register Product do
     end
     f.actions
   end
-
 end
