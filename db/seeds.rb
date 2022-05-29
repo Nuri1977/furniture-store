@@ -40,5 +40,10 @@ end
   Type.create!(type_name: Faker::Commerce.unique.brand, category_id: Category.first.id)
 end
 
+5.times do
+  Product.create!(product_name: Faker::House.furniture, type_id: Type.first.id, price: 25,  dimensions: "25x25")
+  Product.create!(product_name: Faker::House.furniture, type_id: Type.second.id, price: 50, dimensions: "25x25")
+end
+
 
 puts 'Seed data created successfully'

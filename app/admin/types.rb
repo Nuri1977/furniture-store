@@ -17,7 +17,7 @@ ActiveAdmin.register Type do
   # end
   form do |f|
     f.inputs do
-      f.input :category_id, as: :select, collection: Category.all.map {|u| [u.category_name.to_s, u.id]}
+      f.input :category_id, as: :select, collection: Category.all.map { |u| [u.category_name.to_s, u.id] }
       f.input :type_name
     end
     f.actions

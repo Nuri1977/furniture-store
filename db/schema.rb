@@ -50,10 +50,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_28_102857) do
     t.bigint "type_id", null: false
     t.string "product_name"
     t.integer "price"
-    t.boolean "show_price"
-    t.boolean "new_product"
-    t.boolean "on_promotion"
-    t.boolean "is_outlet"
+    t.boolean "show_price", default: false, null: false
+    t.boolean "new_product", default: false, null: false
+    t.boolean "on_promotion", default: false, null: false
+    t.boolean "is_outlet", default: false, null: false
     t.text "dimensions"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
