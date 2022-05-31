@@ -1,6 +1,7 @@
 <div class="mx-auto md:w-2/3 w-50 px-6 py-3">
   <h2 class="font-bold text-4xl mb-6">Log in</h2>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="mb-6">
       <%= f.label :email, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
