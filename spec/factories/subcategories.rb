@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :subcategory do
-    category { nil }
+    association :category
     name { 'MyString' }
   end
 end
