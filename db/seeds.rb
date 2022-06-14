@@ -2,6 +2,9 @@ require 'faker'
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
+User.create!(email: 'nurilacka@gmail.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+User.create!(email: 'user@test.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
 Showroom.create!(
   name: 'Struga',
   adress: 'Zufer Music',
@@ -37,8 +40,13 @@ Showroom.create!(
 end
 
 5.times do
-  Type.create!(type_name: Faker::Commerce.unique.brand, category_id: Category.first.id)
+  Subcategory.create!(name: Faker::Commerce.unique.brand, category_id: Category.first.id)
 end
 
+5.times do
+  Product.create!(product_name: Faker::House.unique.room, subcategory_id: Category.first.id, price: Faker::Number.number(digits: 3), dimensions: '100x100x100')
+  Product.create!(product_name: Faker::House.unique.room, subcategory_id: Category.second.id, price: Faker::Number.number(digits: 3), dimensions: '100x100x100')
+  Product.create!(product_name: Faker::House.unique.room, subcategory_id: Category.last.id, price: Faker::Number.number(digits: 3), dimensions: '100x100x100')
+end
 
 puts 'Seed data created successfully'
