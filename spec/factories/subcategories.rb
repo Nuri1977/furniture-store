@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :type do
+  factory :subcategory do
     association :category
-    type_name { 'MyType' }
+    name { 'MyString' }
   end
 end
