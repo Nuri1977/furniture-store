@@ -15,18 +15,4 @@ ActiveAdmin.register Product do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-
-  form do |f|
-    f.inputs do
-      f.input :type_id, as: :select, collection: Type.all.map { |u| [u.type_name.to_s, u.id] }
-      f.input :product_name
-      f.input :price
-      f.input :show_price
-      f.input :new_product
-      f.input :on_promotion
-      f.input :on_promotion
-      f.input :dimensions
-    end
-    f.actions
-  end
 end
