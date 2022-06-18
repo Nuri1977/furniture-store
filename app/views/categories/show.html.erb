@@ -1,8 +1,15 @@
 <div class="mx-auto md:w-2/3 w-full flex px-6 py-3">
   <div class="mx-auto">
+    <%
+=begin%>
+ <%= image_tag @category.image %>
+<%
+=end%>
+  <%= image_tag @category.image if @category.image.attached? %>
     <% @subcategories.each do |subcategory| %>
       <%= link_to subcategory do %>
         <%= subcategory.name %>
+        <%= image_tag subcategory.image if subcategory.image.attached? %>
       <% end %>
     <% end %>
   </div>
