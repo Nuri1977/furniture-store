@@ -3,10 +3,10 @@ class CreateProducts < ActiveRecord::Migration[7.0]
     create_table :products do |t|
       t.string :product_name
       t.integer :price
-      t.boolean :show_price
-      t.boolean :new_product
-      t.boolean :on_promotion
-      t.boolean :is_outlet
+      t.boolean :show_price, null: false, default: false
+      t.boolean :new_product, null: false, default: false
+      t.boolean :on_promotion, null: false, default: false
+      t.boolean :is_outlet, null: false, default: false
       t.text :dimensions
 
       t.timestamps

@@ -3,5 +3,13 @@
 require 'rails_helper'
 
 RSpec.describe AdminUser, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject(:admin_user) { create(:admin_user) }
+
+  describe 'validations' do
+    it { expect(admin_user).to be_valid }
+
+    %i[email password].each do |field_name|
+      it { expect(admin_user).to validate_presence_of(field_name) }
+    end
+  end
 end
