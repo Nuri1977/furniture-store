@@ -44,16 +44,9 @@ end
 end
 
 5.times do
-<<<<<<< HEAD
-  Product.create!(product_name: Faker::House.furniture, type_id: Type.first.id, price: 25,  dimensions: "25x25")
-  Product.create!(product_name: Faker::House.furniture, type_id: Type.second.id, price: 50, dimensions: "25x25")
-end
-
-=======
   Product.create!(product_name: Faker::House.unique.room, subcategory_id: Category.first.id, price: Faker::Number.number(digits: 3), dimensions: '100x100x100')
   Product.create!(product_name: Faker::House.unique.room, subcategory_id: Category.second.id, price: Faker::Number.number(digits: 3), dimensions: '100x100x100')
   Product.create!(product_name: Faker::House.unique.room, subcategory_id: Category.last.id, price: Faker::Number.number(digits: 3), dimensions: '100x100x100')
 end
->>>>>>> e84a41f29766c33c3b0ba075c86d7a0d3521e406
 
 puts 'Seed data created successfully'

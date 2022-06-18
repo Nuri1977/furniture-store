@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :category do
-    category_name { 'MyString' }
+    category_name { Faker::Commerce.brand }
   end
 end
