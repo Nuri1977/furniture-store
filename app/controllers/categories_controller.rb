@@ -4,7 +4,9 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: %i[show]
 
   # GET /categories/1
-  def show; end
+  def show
+    @subcategories = @category.subcategories
+  end
 
   private
 
