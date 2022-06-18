@@ -1,16 +1,27 @@
-<div class="mx-auto md:w-2/3 w-full flex px-6 py-3">
-  <div class="mx-auto">
-    <%
-=begin%>
- <%= image_tag @category.image %>
-<%
-=end%>
-  <%= image_tag @category.image if @category.image.attached? %>
-    <% @subcategories.each do |subcategory| %>
-      <%= link_to subcategory do %>
-        <%= subcategory.name %>
-        <%= image_tag subcategory.image if subcategory.image.attached? %>
-      <% end %>
-    <% end %>
+<%if @category.image.attached? %>
+  <div class="bg-cover bg-center bg-repeat flex justify-center items-center mb-6 relative", style="background-image: url('<%= url_for(@category.image) %>'); height: 250px; width: 100%;">
+    <div class="absolute top-0 left-0 right-0 bottom-0 bg-black opacity-40 z-40 h-full" style="background-color: black; opacity: 0.4; height: 100%;"> </div>
+    <div class="w-full relative">
+      <div class="container text-left mx-auto">
+        <div class="text-white text-4xl"><%= @category.category_name %></div>
+      </div>
+    </div>
+
   </div>
-</div>
+<% end %>
+
+<% @subcategories.each do |subcategory| %>
+  <div class="bg-cover bg-center container  flex justify-center items-center mb-6 mx-auto relative", style="background-image: url('<%= url_for(subcategory.image) %>'); height: 250px; width: 90%;">
+    <div class="absolute top-0 left-0 right-0 bottom-0 bg-black opacity-40 z-40 h-full" style="background-color: black; opacity: 0.4; height: 100%;"> </div>
+      <div class="w-full relative">
+        <div class="text-center">
+          <div class="text-white text-3xl mb-6"><%= subcategory.name %></div>
+          <button>
+            <%= link_to "See all products", subcategory, class: "block text-xl rounded py-2 px-6 bg-blue-600 hover:bg-blue-400 text-white" %>
+          </button>
+        </div>
+      </div>
+
+  </div>
+<% end %>
+
