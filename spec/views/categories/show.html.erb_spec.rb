@@ -3,14 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe 'categories/show', type: :view do
-  before do
-    @category = assign(:category, Category.create!(
-                                    category_name: 'Category Name'
-                                  ))
-  end
-
   it 'renders attributes in <p>' do
+    assign(:category, create(:category))
     render
-    expect(rendered).to match(/Category Name/)
+    expect(rendered).to match("\n\n")
   end
 end

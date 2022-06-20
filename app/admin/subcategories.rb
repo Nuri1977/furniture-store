@@ -22,5 +22,4 @@ ActiveAdmin.register Subcategory do
     end
     f.actions
   end
-
 end
