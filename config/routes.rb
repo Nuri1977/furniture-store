@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :subcategories
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  resources :categories
+  resources :categories, only: [:show]
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

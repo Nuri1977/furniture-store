@@ -89,3 +89,4 @@ gem 'erb-formatter'
 gem 'devise'
 gem 'activeadmin'
 gem 'sass-rails'
+gem "image_processing", ">= 1.2"
