@@ -8,8 +8,7 @@ describe 'layouts/dashboard' do
   it 'renders dashboard' do
     render
 
-    expect(rendered).to include("Welcome back")
+    expect(rendered).to include('Welcome back')
     expect(rendered).to have_link('Account')
   end
-
 end
