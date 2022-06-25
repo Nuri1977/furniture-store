@@ -5,7 +5,7 @@
                 <div>
                     <div class="text-gray-500 text-m">
                       <%= link_to "home", root_path %> >
-                      <%= link_to @product.subcategory.category.category_name , category_path(id: @product.subcategory.category.id)  %> >
+                      <%= link_to @category.category_name , category_path(id: @category.id)  %> >
                       <%= link_to @product.subcategory.name , subcategory_path(id: @product.subcategory.id)  %> >
                       <%= @product.product_name %>
                     </div>
