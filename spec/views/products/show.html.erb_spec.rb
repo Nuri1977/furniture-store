@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe 'products/show', type: :view do
-
   it 'renders the product show page' do
     category = assign(:category, Category.create(category_name: 'Test category'))
 
