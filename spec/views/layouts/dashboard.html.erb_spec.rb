@@ -5,6 +5,8 @@ require 'rails_helper'
 describe 'layouts/dashboard' do
   let(:user) { create(:user) }
 
+  before { sign_in user }
+
   it 'renders dashboard' do
     render
 
