@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe 'showrooms/index' do
-  let(:showroom) { create(:showroom) }
+  let!(:showroom) { create(:showroom) }
 
   before do
     assign(:showrooms, [showroom])
