@@ -7,5 +7,7 @@ class Product < ApplicationRecord
   validates :price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :dimensions, presence: true
 
+  has_one_attached :image
+
   scope :outlet, -> { where(outlet: true) }
 end

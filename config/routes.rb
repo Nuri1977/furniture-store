@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'products/show'
   resources :subcategories
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
   # get '/showrooms/new', to: 'showrooms#new'
   # post '/showrooms/create', to: 'showrooms#create'
   resources :showrooms, only: [:index, :new, :create]
+  resources :products, only: [:show]
   root to: 'pages#home'
 
   namespace :dashboard do
