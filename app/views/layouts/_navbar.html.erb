@@ -1,9 +1,10 @@
-<nav class="shadow bg-gray-800">
+<div class="fixed w-full left-0 top-0 bg-transparent z-10 h-screen hidden transition-all" id="backdrop"></div>
+<nav class="shadow bg-gray-800 z-20 md:z-0 left-0 top-0 md:h-auto" id="navbar">
     <div class="container px-6 py-3 mx-auto">
         <div class="flex flex-col md:flex-row md:justify-between md:items-center">
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
-                    <%= link_to 'Brand',  root_path, class: "text-2xl font-bold transition-colors duration-200 transform text-white lg:text-3xl hover:text-gray-300" %>
+                    <%= link_to 'Brand',  root_path, class: "text-2xl font-bold transition-colors duration-200 transform text-white lg:text-3xl hover:text-gray-300 cursor-pointer" %>
 
                     <!-- Search input on desktop screen -->
                     <div class="hidden mx-10 md:block">
@@ -20,7 +21,7 @@
                 </div>
 
                 <!-- Mobile menu button -->
-                <div class="flex md:hidden">
+                <div class="flex md:hidden" id="hamburger-btn">
                     <button type="button" class="text-gray-200 hover:text-gray-400 focus:outline-none focus:text-gray-400" aria-label="toggle menu">
                         <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">
                             <path fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
@@ -30,16 +31,16 @@
             </div>
 
             <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
-            <div class="items-center md:flex">
+            <div class="items-center md:flex hidden md:block" id="mobile-menu">
                 <div class="flex flex-col mt-2 md:flex-row md:mt-0 md:mx-1">
-                    <%= link_to 'Home', root_path, class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
-                    <%= link_to 'About', "#", class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
-                    <%= link_to 'Catalogues', "#", class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
-                    <%= link_to 'Showrooms', showrooms_path, class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
+                    <%= link_to 'Home', root_path, class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0 cursor-pointer" %>
+                    <%= link_to 'About', "#", class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0 cursor-pointer" %>
+                    <%= link_to 'Catalogues', "#", class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0 cursor-pointer" %>
+                    <%= link_to 'Showrooms', showrooms_path, class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0 cursor-pointer" %>
                 </div>
 
                 <div class="flex items-center py-2 -mx-1 md:mx-0">
-                    <%= link_to "#", class: "relative transition-colors duration-200 transform text-gray-200 hover:text-gray-300"  do %>
+                    <%= link_to "#", class: "relative transition-colors duration-200 transform text-gray-200 hover:text-gray-300 cursor-pointer"  do %>
                          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.70711 15.2929C4.07714 15.9229 4.52331 17 5.41421 17H17M17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17ZM9 19C9 20.1046 8.10457 21 7 21C5.89543 21 5 20.1046 5 19C5 17.8954 5.89543 17 7 17C8.10457 17 9 17.8954 9 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
@@ -49,8 +50,8 @@
                 </div>
                 <div class="md:flex">
                 <% if user_signed_in? %>
-                    <%= link_to "Dashboard", dashboard_root_path, class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
-                    <%= link_to "Sign Out", destroy_user_session_path, data: {turbo_method: :delete}, class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
+                    <%= link_to "Dashboard", dashboard_root_path, class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0 cursor-pointer" %>
+                    <%= link_to "Sign Out", destroy_user_session_path, data: {turbo_method: :delete}, class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0 cursor-pointer" %>
                 <% else %>
                     <%= link_to "Sign in", user_session_path, class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
                 <% end %>
@@ -71,9 +72,9 @@
             </div>
         </div>
 
-            <div class="py-1 mt-3 -mx-3 overflow-y-auto whitespace-nowrap scroll-hidden">
+            <div class="py-1 mt-3 -mx-3 md:overflow-y-auto md:whitespace-nowrap md:scroll-hidden hidden md:block flex flex-col md:block" id="mobile-menu1">
             <% Category.all.each do |cat| %>
-                <%= link_to cat.category_name.capitalize, category_path(cat), class: "mx-4 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-600 hover:text-blue-400 hover:underline md:my-0"  %>
+                <%= link_to cat.category_name.capitalize, category_path(cat), class: "mx-4 my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-600 hover:text-blue-400 hover:underline md:my-0 cursor-pointer"  %>
             <% end %>
         </div>
     </div>

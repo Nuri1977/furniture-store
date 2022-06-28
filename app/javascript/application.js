@@ -4,18 +4,22 @@ import "controllers"
 
 window.addEventListener('load', () => {
   const hamburgerBtn = document.getElementById('hamburger-btn');
+  const navbar = document.getElementById('navbar');
   const menu = document.getElementById('mobile-menu');
   const menu1 = document.getElementById('mobile-menu1');
   const backdrop = document.getElementById('backdrop');
   hamburgerBtn.addEventListener('click', () => {
-    menu.classList.remove('-translate-x-full');
-    menu1.classList.remove('-translate-x-full');
+    console.log('Nuri trup');
+    navbar.classList.add('h-screen');
+    menu.classList.remove('hidden');
+    menu1.classList.remove('hidden');
     backdrop.classList.remove('hidden');
   });
 
   backdrop.addEventListener('click', () => {
-    menu.classList.add('-translate-x-full');
-    menu1.classList.add('-translate-x-full');
+    navbar.classList.remove('h-screen');
+    menu.classList.add('hidden');
+    menu1.classList.add('hidden');
     backdrop.classList.add('hidden');
   });
 });
