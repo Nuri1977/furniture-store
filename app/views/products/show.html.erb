@@ -25,6 +25,11 @@
                         <h1 class="text-2xl font-semibold text-gray-700 capitalize dark:text-white">Dimensions: <%= @product.dimensions %></h1>
                     </div>
                 </div>
+                <div class="md:flex md:items-start md:-mx-4">
+                    <div class="mt-4 md:mx-4 md:mt-0">
+                        <%= button_to 'Add to cart', line_items_path(product_id: @product), class: '' %>
+                    </div>
+                </div>
             </div>
 
             <div class="lg:flex lg:items-center lg:w-1/2 lg:justify-center">
