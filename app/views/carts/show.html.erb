@@ -1,5 +1,5 @@
 <% if @cart.line_items.count > 0 %>
-  <div class="container px-6 py-10 mx-auto">
+  <div class="container px-6 py-10 mx-auto view-height">
     <div class="text-right">
       <%= link_to 'Keep Shopping', product_path(id: @cart.line_items.last.product_id ), class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
     </div>
@@ -19,5 +19,6 @@
     </section>
   </div>
 <% else %>
-  No items
+  <div class="container px-6 py-10 mx-auto view-height">
+  <h1>No items</h1>
 <% end %>
