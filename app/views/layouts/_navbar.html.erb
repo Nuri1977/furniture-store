@@ -47,6 +47,9 @@
 
                         <span class="absolute top-0 left-0 p-1 text-xs text-white bg-blue-500 rounded-full"></span>
                     <% end %>
+                    <% if cart_has_items %>
+                        <span class=" text-white rounded-full"><%= cart_count_over_one %></span>
+                    <% end %>
                 </div>
                 <div class="md:flex">
                 <% if user_signed_in? %>
