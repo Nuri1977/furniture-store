@@ -1,22 +1,27 @@
-<div id="<%= dom_id line_item %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Product:</strong>
-    <%= line_item.product_id %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Cart:</strong>
-    <%= line_item.cart_id %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Quantity:</strong>
+<div class="columns align-items-center ml-3">
+  <div class="column is-1">
     <%= line_item.quantity %>
-  </p>
+  </div>
+  <div class="column is-2">
+    <figure class="is-128x128 image">
+      <% if line_item.product.image.attached? %>
+        <%= image_tag(line_item.product.image, class: "w-24") %>
+      <% end %>
+    </figure>
+  </div>
+  <div class="column is-9">
+    <strong><%= line_item.product.product_name %></strong>
+    <div class="columns align-items-center">
+      <div class="content column is-9">
+        <%= truncate(line_item.product.dimensions, length: 140) %>
+      </div>
+      <div class="column is-3 has-text-right">
+        <strong class="f4"><%= number_to_currency(line_item.total_price) %></strong>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <% if action_name != "show" %>
-    <%= link_to "Show this line item", line_item, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this line item', edit_line_item_path(line_item), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+<div class="has-text-right">
+  <%= link_to 'Remove Item', line_item, method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "button is-small mb4" %>
 </div>
