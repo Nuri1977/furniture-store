@@ -1,29 +1,22 @@
 <% if @cart.line_items.count > 0 %>
-  <div class="keep-shopping pv1 mt4 has-text-right">
-    <%= link_to 'Keep Shopping', product_path(id: @cart.line_items.last.product_id ), class: 'button is-warning' %>
-  </div>
-  <hr />
-  <section class="section">
-    <%= render(@cart.line_items) %>
-
-    <div class="columns">
-      <div class="column">
-        <%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you sure? " }, class: "button is-danger" %>
-      </div>
-      <div class="column total has-text-right">
-        <h4 class="title is-4">
-          <span class="f5 has-text-grey">Total:</span> <%= number_to_currency(@cart.total_amount) %>
-        </h4>
-      </div>
+  <div class="container px-6 py-10 mx-auto">
+    <div class="text-right">
+      <%= link_to 'Keep Shopping', product_path(id: @cart.line_items.last.product_id ), class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
     </div>
-  </section>
+    <section class="section p-2">
+      <%= render(@cart.line_items) %>
 
-  <div class="mx-auto md:w-2/3 w-full flex">
-    <div class="mx-auto">
-      <% if notice.present? %>
-        <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-      <% end %>
-    </div>
+      <div class="flex justify-between items-center p-2">
+        <div class="column">
+          <%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you sure? " }, class: "ml-2 rounded-lg py-3 px-5 bg-red-300 inline-block font-medium" %>
+        </div>
+        <div class="column total has-text-right">
+          <h4 class="title is-4">
+            <span class="f5 has-text-grey">Total:</span> <%= number_to_currency(@cart.total_amount) %>
+          </h4>
+        </div>
+      </div>
+    </section>
   </div>
 <% else %>
   No items
