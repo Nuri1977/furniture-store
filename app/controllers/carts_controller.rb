@@ -2,14 +2,8 @@
 
 class CartsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
-  before_action :set_cart, only: %i[show edit update destroy]
+  before_action :set_cart, only: %i[show destroy]
   # rubocop:disable Rails/I18nLocaleTexts
-
-  # GET /carts
-  # GET /carts.json
-  def index
-    @carts = Cart.all
-  end
 
   # GET /carts/1
   # GET /carts/1.json
@@ -19,9 +13,6 @@ class CartsController < ApplicationController
   def new
     @cart = Cart.new
   end
-
-  # GET /carts/1/edit
-  def edit; end
 
   # POST /carts
   # POST /carts.json
@@ -34,20 +25,6 @@ class CartsController < ApplicationController
         format.json { render :show, status: :created, location: @cart }
       else
         format.html { render :new }
-        format.json { render json: @cart.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /carts/1
-  # PATCH/PUT /carts/1.json
-  def update
-    respond_to do |format|
-      if @cart.update(cart_params)
-        format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
-        format.json { render :show, status: :ok, location: @cart }
-      else
-        format.html { render :edit }
         format.json { render json: @cart.errors, status: :unprocessable_entity }
       end
     end
