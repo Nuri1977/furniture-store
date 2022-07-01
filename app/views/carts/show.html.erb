@@ -21,4 +21,5 @@
 <% else %>
   <div class="container px-6 py-10 mx-auto view-height">
   <h1>No items</h1>
+  <%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you sure? " }, class: "ml-2 rounded-lg py-3 px-5 bg-red-300 inline-block font-medium" %>
 <% end %>
