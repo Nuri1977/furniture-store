@@ -36,17 +36,33 @@ Showroom.create!(
 )
 
 5.times do
-  Category.create!(category_name: Faker::House.unique.furniture)
+  category = Category.create!(category_name: Faker::House.unique.room)
+  category.image.attach(io: File.open("#{Rails.root}/app/assets/images/bedroom_01.jpg"), filename: 'bedroom_01.jpg', content_type: 'image/jpg')
 end
 
-5.times do
-  Subcategory.create!(name: Faker::Commerce.unique.brand, category_id: Category.first.id)
+Category.all.each do |category|
+  5.times do
+    subcategory = Subcategory.create!(name: Faker::House.furniture, category_id: category.id)
+    subcategory.image.attach(io: File.open("#{Rails.root}/app/assets/images/bedroom_02.jpg"), filename: 'bedroom_01.jpg', content_type: 'image/jpg')
+  end
 end
 
-5.times do
-  Product.create!(product_name: Faker::House.unique.room, subcategory_id: Category.first.id, price: Faker::Number.number(digits: 3), dimensions: '100x100x100')
-  Product.create!(product_name: Faker::House.unique.room, subcategory_id: Category.second.id, price: Faker::Number.number(digits: 3), dimensions: '100x100x100')
-  Product.create!(product_name: Faker::House.unique.room, subcategory_id: Category.last.id, price: Faker::Number.number(digits: 3), dimensions: '100x100x100')
+
+Subcategory.all.each do |subcategory|
+  i = 0
+  5.times do
+    i += 1
+    product = Product.create!(product_name: Faker::Ancient.primordial, subcategory_id: subcategory.id, price: Faker::Number.number(digits: 3), dimensions: '100x100x100')
+    product.image.attach(io: File.open("#{Rails.root}/app/assets/images/sofa_01.jpg"), filename: 'sofa_01.jpg', content_type: 'image/jpg') if i == 1
+    product.image.attach(io: File.open("#{Rails.root}/app/assets/images/sofa_02.jpg"), filename: 'sofa_02.jpg', content_type: 'image/jpg') if i == 2
+    product.image.attach(io: File.open("#{Rails.root}/app/assets/images/sofa_03.jpg"), filename: 'sofa_03.jpg', content_type: 'image/jpg') if i == 3
+    product.image.attach(io: File.open("#{Rails.root}/app/assets/images/sofa_04.jpg"), filename: 'sofa_04.jpg', content_type: 'image/jpg') if i == 4
+    product.image.attach(io: File.open("#{Rails.root}/app/assets/images/sofa_05.jpg"), filename: 'sofa_05.jpg', content_type: 'image/jpg') if i == 5
+  end
 end
+
+
+
+
 
 puts 'Seed data created successfully'

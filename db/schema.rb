@@ -77,10 +77,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_18_085758) do
   create_table "products", force: :cascade do |t|
     t.string "product_name"
     t.integer "price"
-    t.boolean "show_price"
-    t.boolean "new_product"
-    t.boolean "on_promotion"
-    t.boolean "is_outlet"
+    t.boolean "show_price", default: false, null: false
+    t.boolean "new_product", default: false, null: false
+    t.boolean "on_promotion", default: false, null: false
+    t.boolean "is_outlet", default: false, null: false
     t.text "dimensions"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
