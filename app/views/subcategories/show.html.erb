@@ -1,15 +1,11 @@
-
-
-
-
 <section class="bg-white dark:bg-gray-900">
 
   <%if @subcategory && @subcategory.image.attached? %>
-    <div class="bg-cover bg-center bg-repeat flex justify-center items-center relative", style="background-image: url('<%= url_for(@subcategory.image) %>'); height: 250px; width: 100%;">
+    <div class="bg-cover bg-center bg-repeat flex justify-center items-center relative", style="background-image: url('<%= url_for(@subcategory.image) %>'); height: 150px; width: 100%;">
       <div class="absolute top-0 left-0 right-0 bottom-0 bg-black opacity-40 z-40 h-full" style="background-color: black; opacity: 0.4; height: 100%;"> </div>
-      <div class="w-full relative">
+      <div class="w-full relative z-50">
         <div class="container text-center mx-auto">
-          <div class="text-white text-4xl"><%= @subcategory.name.upcase %></div>
+          <div class="text-white text-6xl"><%= @subcategory.name.upcase %></div>
         </div>
       </div>
     </div>
