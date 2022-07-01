@@ -3,5 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe Cart, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  cart = described_class.new
+
+  describe 'validations' do
+    it { expect(cart).to be_valid }
+  end
 end

@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :line_item do
-    product { nil }
-    cart { nil }
+    association :product
+    cart { Cart.create! }
     quantity { 1 }
   end
 end
