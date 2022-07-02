@@ -49,15 +49,10 @@ end
 
 
 Subcategory.all.each do |subcategory|
-  i = 0
-  5.times do
-    i += 1
+  5.times do |i|
+    img_name = "sofa_0#{i += 1}.jpg"
     product = Product.create!(product_name: Faker::Ancient.primordial, subcategory_id: subcategory.id, price: Faker::Number.number(digits: 3), dimensions: '100x100x100')
-    product.image.attach(io: File.open("#{Rails.root}/app/assets/images/sofa_01.jpg"), filename: 'sofa_01.jpg', content_type: 'image/jpg') if i == 1
-    product.image.attach(io: File.open("#{Rails.root}/app/assets/images/sofa_02.jpg"), filename: 'sofa_02.jpg', content_type: 'image/jpg') if i == 2
-    product.image.attach(io: File.open("#{Rails.root}/app/assets/images/sofa_03.jpg"), filename: 'sofa_03.jpg', content_type: 'image/jpg') if i == 3
-    product.image.attach(io: File.open("#{Rails.root}/app/assets/images/sofa_04.jpg"), filename: 'sofa_04.jpg', content_type: 'image/jpg') if i == 4
-    product.image.attach(io: File.open("#{Rails.root}/app/assets/images/sofa_05.jpg"), filename: 'sofa_05.jpg', content_type: 'image/jpg') if i == 5
+    product.image.attach(io: File.open("#{Rails.root}/app/assets/images/#{img_name}"), filename: img_name, content_type: 'image/jpg')
   end
 end
 
