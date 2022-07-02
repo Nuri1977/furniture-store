@@ -18,7 +18,6 @@ class LineItemsController < ApplicationController
     else
       redirect_to @line_item.cart, notice: 'Error updating quantity'
     end
-
   end
 
   # POST /line_items
