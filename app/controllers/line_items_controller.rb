@@ -1,22 +1,31 @@
 # frozen_string_literal: true
 
 class LineItemsController < ApplicationController
-  include CurrentCart
   # rubocop:disable Rails/I18nLocaleTexts
 
-  before_action :set_line_item, only: %i[destroy]
-  before_action :set_cart, only: [:create]
+  before_action :set_line_item, only: %i[update destroy]
 
   # GET /line_items/new
   def new
     @line_item = LineItem.new
   end
 
+  def update
+    @line_item.quantity = line_item_params[:quantity]
+
+    if @line_item.save
+      redirect_to @line_item.cart, notice: 'Item quantity updated successfully'
+    else
+      redirect_to @line_item.cart, notice: 'Error updating quantity'
+    end
+
+  end
+
   # POST /line_items
   # POST /line_items.json
   def create
-    product = Product.find(params[:product_id])
-    @line_item = @cart.add_product(product)
+    product = Product.find(line_item_params[:product_id])
+    @line_item = @cart.add_product(product, line_item_params[:quantity])
 
     respond_to do |format|
       if @line_item.save

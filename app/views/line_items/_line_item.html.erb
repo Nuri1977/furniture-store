@@ -14,7 +14,11 @@
   <div>
   </div>
   <div>
-    <h3><%= line_item.quantity %></h3>
+    <h3><%#= line_item.quantity %></h3>
+    <%= form_with model: line_item, local: true do |form| %>
+        <%= form.hidden_field :product_id, value: line_item.product_id %>
+        <%= form.number_field :quantity, {onchange: 'this.form.submit();', class: "w-16 rounded", min: 1} %>
+    <% end %>
   </div>
   <div>
     <h3><%= number_to_currency(line_item.product.price, unit: "€", precision: 0, format: "%n %u") %></h3>

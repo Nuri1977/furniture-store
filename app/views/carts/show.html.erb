@@ -1,7 +1,8 @@
 <% if @cart.line_items.count > 0 %>
   <div class="container px-6 py-10 mx-auto view-height">
-    <div class="text-right">
-      <%= link_to 'Keep Shopping', product_path(id: @cart.line_items.last.product_id ), class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
+    <div class="text-right flex justify-end">
+      <%= link_to 'Keep Shopping', root_path , class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
+      <%= link_to 'Make order',"#" , class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
     </div>
     <section class="section p-2">
       <%= render(@cart.line_items) %>
@@ -12,14 +13,14 @@
         </div>
         <div class="column total has-text-right">
           <h4 class="title is-4">
-            <span class="f5 has-text-grey">Total:</span> <%= number_to_currency(@cart.total_amount) %>
+            <span class="f5 has-text-grey font-semibold">Total: <%= number_to_currency(@cart.total_amount) %></span>
           </h4>
         </div>
       </div>
     </section>
   </div>
 <% else %>
-  <div class="container px-6 py-10 mx-auto view-height">
-  <h1>No items</h1>
-  <%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you sure? " }, class: "ml-2 rounded-lg py-3 px-5 bg-red-300 inline-block font-medium" %>
+  <div class="container px-6 py-10 mx-auto view-height text-center">
+    <h1 class="text-4xl">No items added to cart</h1>
+  </div>
 <% end %>
