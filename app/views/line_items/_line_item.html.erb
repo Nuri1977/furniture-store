@@ -1,0 +1,33 @@
+<hr>
+<div class="flex flex-col justify-center items-center p-2 md:flex-row md:justify-between" >
+  <div>
+    <h3 class="w-full md:w-10"><%= line_item.product.product_name %></h3>
+  </div>
+  <div>
+    <h3 class="w-full md:w-10"><%= truncate(line_item.product.dimensions, length: 140) %></h3>
+  </div>
+  <div>
+    <% if line_item.product.image.attached? %>
+      <%= image_tag(line_item.product.image, class: "w-24") %>
+    <% end %>
+  </div>
+  <div>
+  </div>
+  <div>
+    <h3><%#= line_item.quantity %></h3>
+    <%= form_with model: line_item, local: true do |form| %>
+        <%= form.hidden_field :product_id, value: line_item.product_id %>
+        <%= form.number_field :quantity, {onchange: 'this.form.submit();', class: "w-16 rounded", min: 1} %>
+    <% end %>
+  </div>
+  <div>
+    <h3><%= number_to_currency(line_item.product.price, unit: "€", precision: 0, format: "%n %u") %></h3>
+  </div>
+    <div>
+    <%= link_to 'Remove Item', line_item, method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "ml-2 rounded-lg p-1 bg-red-300 inline-block font-medium" %>
+  </div>
+  <div>
+    <h3><%= number_to_currency(line_item.total_price, unit: "€", precision: 0, format: "%n %u") %></h3>
+  </div>
+</div>
+<hr>

@@ -25,6 +25,14 @@
                         <h1 class="text-2xl font-semibold text-gray-700 capitalize dark:text-white">Dimensions: <%= @product.dimensions %></h1>
                     </div>
                 </div>
+                <div class="md:flex md:items-start md:-mx-4">
+                    <%= form_with model: @product.line_items.new, url: line_items_path do |form| %>
+                        <%= form.hidden_field :product_id, value: @product.id %>
+                        <%= form.number_field :quantity, min: 1, class: "w-24 rounded-lg py-3 text-gray-800 inline-block font-medium" %>
+
+                        <%= form.submit 'Add to cart', class: " rounded-lg py-3 px-5 text-white bg-gray-800 inline-block font-medium" %>
+                    <% end %>
+                </div>
             </div>
 
             <div class="lg:flex lg:items-center lg:w-1/2 lg:justify-center">
