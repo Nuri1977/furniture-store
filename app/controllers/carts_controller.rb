@@ -2,7 +2,6 @@
 
 class CartsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
-  before_action :set_cart, only: %i[show destroy]
   # rubocop:disable Rails/I18nLocaleTexts
 
   # GET /carts/1

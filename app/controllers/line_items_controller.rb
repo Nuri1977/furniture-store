@@ -38,7 +38,6 @@ class LineItemsController < ApplicationController
   # DELETE /line_items/1
   # DELETE /line_items/1.json
   def destroy
-    Rails.logger.debug @line_item.cart_id
     cart_id = @line_item.cart_id
     @line_item.destroy
     respond_to do |format|
