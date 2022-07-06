@@ -36,17 +36,28 @@ Showroom.create!(
 )
 
 5.times do
-  Category.create!(category_name: Faker::House.unique.furniture)
+  category = Category.create!(category_name: Faker::House.unique.room)
+  category.image.attach(io: File.open("#{Rails.root}/app/assets/images/bedroom_01.jpg"), filename: 'bedroom_01.jpg', content_type: 'image/jpg')
 end
 
-5.times do
-  Subcategory.create!(name: Faker::Commerce.unique.brand, category_id: Category.first.id)
+Category.all.each do |category|
+  5.times do
+    subcategory = Subcategory.create!(name: Faker::House.furniture, category_id: category.id)
+    subcategory.image.attach(io: File.open("#{Rails.root}/app/assets/images/bedroom_02.jpg"), filename: 'bedroom_01.jpg', content_type: 'image/jpg')
+  end
 end
 
-5.times do
-  Product.create!(product_name: Faker::House.unique.room, subcategory_id: Category.first.id, price: Faker::Number.number(digits: 3), dimensions: '100x100x100')
-  Product.create!(product_name: Faker::House.unique.room, subcategory_id: Category.second.id, price: Faker::Number.number(digits: 3), dimensions: '100x100x100')
-  Product.create!(product_name: Faker::House.unique.room, subcategory_id: Category.last.id, price: Faker::Number.number(digits: 3), dimensions: '100x100x100')
+
+Subcategory.all.each do |subcategory|
+  5.times do |i|
+    img_name = "sofa_0#{i += 1}.jpg"
+    product = Product.create!(product_name: Faker::Ancient.primordial, subcategory_id: subcategory.id, price: Faker::Number.number(digits: 3), dimensions: '100x100x100')
+    product.image.attach(io: File.open("#{Rails.root}/app/assets/images/#{img_name}"), filename: img_name, content_type: 'image/jpg')
+  end
 end
+
+
+
+
 
 puts 'Seed data created successfully'

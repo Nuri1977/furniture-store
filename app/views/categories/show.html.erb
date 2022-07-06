@@ -11,7 +11,8 @@
 <% end %>
 
 <% @subcategories&.each do |subcategory| %>
-  <div class="bg-cover bg-center container  flex justify-center items-center mb-6 mx-auto relative", style="background-image: url('<%= url_for(subcategory.image) %>'); height: 250px; width: 90%;">
+
+  <div class="bg-cover bg-center container  flex justify-center items-center mb-6 mx-auto relative", style="background-image: url('<%= url_for(subcategory.image) if  subcategory.image.attached?%>'); height: 250px; width: 90%;">
     <div class="absolute top-0 left-0 right-0 bottom-0 bg-black opacity-40 z-30 h-full" style="background-color: black; opacity: 0.4; height: 100%;"> </div>
       <div class="w-full relative z-50">
         <div class="text-center">
@@ -21,7 +22,6 @@
           </button>
         </div>
       </div>
-
   </div>
 <% end %>
 
