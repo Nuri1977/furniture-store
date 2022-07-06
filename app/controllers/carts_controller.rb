@@ -13,8 +13,7 @@ class CartsController < ApplicationController
 
   # POST /carts
   # POST /carts.json
-  def create
-  end
+  def create; end
 
   # DELETE /carts/1
   # DELETE /carts/1.json
